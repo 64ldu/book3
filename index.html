@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Book</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls" aria-label="Reading controls">
+            <button id="fullscreenBtn" class="control-button" type="button">Fullscreen</button>
+            <label class="control-select" aria-label="Voice">
+                <select id="voiceSelect" class="control-select-input">
+                    <option value="">Loading voices…</option>
+                </select>
+            </label>
+            <button id="narratorBtn" class="control-button" type="button">Narrator: Off</button>
+        </div>
+        <button id="openBookBtn" class="open-button">Open Book</button>
+        
+        <div id="bookContainer" class="book-container hidden">
+            <div class="book">
+                <div class="page" id="page1">
+                    <div class="page-content">
+                        <h2>Page 1</h2>
+                        <p>Welcome to this interactive book! Click anywhere on the pages to flip through them.</p>
+                        <p>This is a realistic 3D book effect with smooth page turning animations.</p>
+                    </div>
+                </div>
+                
+                <div class="page" id="page2">
+                    <div class="page-content">
+                        <h2>Page 2</h2>
+                        <p>The magic of books lies in their ability to transport us to different worlds.</p>
+                        <p>Each page holds new adventures and discoveries waiting to be explored.</p>
+                    </div>
+                </div>
+                
+                <div class="page" id="page3">
+                    <div class="page-content">
+                        <h2>Page 3</h2>
+                        <p>Reading is like traveling without moving your feet.</p>
+                        <p>Through words and imagination, we can visit places we've never been.</p>
+                    </div>
+                </div>
+                
+                <div class="page" id="page4">
+                    <div class="page-content">
+                        <h2>Page 4</h2>
+                        <p>Books are a uniquely portable magic.</p>
+                        <p>They carry knowledge, stories, and wisdom across time and space.</p>
+                    </div>
+                </div>
+                
+                <div class="page" id="page5">
+                    <div class="page-content">
+                        <h2>Page 5</h2>
+                        <p>The end of our journey... for now.</p>
+                        <p>Thank you for reading! Keep exploring the wonderful world of books.</p>
+                    </div>
+                </div>
+                
+                <div class="back-cover">
+                    <div class="page-content">
+                        <h2>The End</h2>
+                        <p>You've reached the back cover!</p>
+                        <p>Click to close the book.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
