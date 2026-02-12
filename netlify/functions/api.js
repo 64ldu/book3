@@ -57,7 +57,7 @@ export async function handler(event, context) {
 
     if (path === '/api/tts' && httpMethod === 'POST') {
       const apiKey = process.env.ELEVENLABS_API_KEY;
-      const defaultVoiceId = process.env.ELEVENLABS_VOICE_ID;
+      const defaultVoiceId = process.env.ELEVENLABS_VOICE_ID || 'CwhRBWXzGAHq8TQ4Fs17';
 
       if (!apiKey) {
         return {
