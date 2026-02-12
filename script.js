@@ -106,7 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`TTS failed: ${resp.status}`);
             }
 
-            const blob = await resp.blob();
+            // Netlify returns base64-encoded audio
+            const audioData = await resp.text();
+            const binaryString = atob(audioData);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: 'audio/mpeg' });
             currentAudioUrl = URL.createObjectURL(blob);
             currentAudio = new Audio(currentAudioUrl);
 
