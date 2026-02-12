@@ -20,6 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastNarratedText = '';
     let selectedVoiceId = '';
 
+    // Helper to get API base URL for Replit (detect if hostname ends with .replit.app)
+    function getApiBaseUrl() {
+        if (window.location.hostname.endsWith('.replit.app')) {
+            // Replit serves the API on the same host but with the server port
+            // We'll use the same host; Replit proxies requests correctly
+            return '';
+        }
+        return '';
+    }
+
     // Give pages a subtle thickness stack in 3D.
     pages.forEach((page, index) => {
         const remaining = pages.length - index;
@@ -83,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             isSpeaking = true;
 
-            const resp = await fetch('/api/tts', {
+            const resp = await fetch(`${getApiBaseUrl()}/api/tts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -183,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function loadVoices() {
         if (!voiceSelect) return;
         try {
-            const resp = await fetch('/api/voices');
+            const resp = await fetch(`${getApiBaseUrl()}/api/voices`);
             if (!resp.ok) throw new Error(`voices failed: ${resp.status}`);
             const data = await resp.json();
             const voices = Array.isArray(data?.voices) ? data.voices : [];
