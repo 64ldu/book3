@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Helper to get API base URL for Replit (detect if hostname ends with .replit.app)
     function getApiBaseUrl() {
         if (window.location.hostname.endsWith('.replit.app')) {
-            // Replit serves the API on the same host but with the server port
-            // We'll use the same host; Replit proxies requests correctly
-            return '';
+            // On Replit live site, use the preview URL for API calls
+            // Extract the Repl name from the live URL and construct the preview URL
+            const replName = window.location.hostname.split('.')[0];
+            return `https://${replName}.id.repl.co`;
         }
         return '';
     }
